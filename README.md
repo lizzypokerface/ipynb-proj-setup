@@ -47,7 +47,7 @@ A structured IPython Notebook project with organized Python packages for enhance
    pre-commit install
    ```
 
-### Running Tests
+### Running Unit Tests
 
 To execute all tests, run the following command (add `-v` for verbose output):
 
