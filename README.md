@@ -57,7 +57,7 @@ poetry run pytest
 
 ### Continuous Integration
 
-This project uses GitHub Actions for continuous integration. The CI pipeline includes:
+This project uses [GitHub Actions](https://docs.github.com/en/actions) for continuous integration. The CI pipeline includes:
 
 - Building the project
 - Running unit tests on every push
