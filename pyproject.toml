@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pytest-for-software-testing"
+name = "my-project"
 version = "0.1.0"
 description = ""
 authors = ["glennlum <glennlum_@hotmail.com>"]
