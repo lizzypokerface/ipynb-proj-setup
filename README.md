@@ -1,7 +1,3 @@
-Sure, here's an improved version of the README:
-
----
-
 # ipynb-proj-setup
 
 A structured IPython Notebook project with organized Python packages for enhanced data analysis.
@@ -46,6 +42,12 @@ A structured IPython Notebook project with organized Python packages for enhance
    ```sh
    pre-commit install
    ```
+
+### Running the Main Program
+
+1. Open `main.ipynb` in Visual Studio Code.
+2. Select the kernel: `venv/bin/python`.
+3. Click the 'Run All' button at the top of the notebook.
 
 ### Running Unit Tests
 
