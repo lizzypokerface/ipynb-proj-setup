@@ -1,0 +1,11 @@
+project:
+  name: My Project
+  version: 1.0.0
+
+paths:
+  python_kernel: ./venv/bin/python
+  data_dir: ./data
+
+settings:
+  debug: true
+  max_retries: 5
