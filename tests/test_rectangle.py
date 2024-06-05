@@ -5,6 +5,7 @@ from my_project.shapes.shapes import Rectangle
 
 # Local fixture
 
+
 @pytest.fixture
 def different_rectangle():
     return Rectangle(1, 2)

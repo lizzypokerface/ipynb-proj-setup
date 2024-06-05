@@ -19,10 +19,10 @@ class Circle(Shape):
     def __eq__(self, other):
         if not isinstance(other, Circle):
             return False
-        return (self.radius == other.radius)
+        return self.radius == other.radius
 
     def area(self):
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
     def perimeter(self):
         return 2 * math.pi * self.radius
@@ -53,10 +53,10 @@ class Square(Shape):
     def __eq__(self, other):
         if not isinstance(other, Square):
             return False
-        return (self.length == other.length)
+        return self.length == other.length
 
     def area(self):
-        return self.length ** 2
+        return self.length**2
 
     def perimeter(self):
         return self.length * 4

@@ -41,4 +41,4 @@ def test_multiply_broken():
 @pytest.mark.xfail(reason="We know we cannot divide by zero")
 def test_divide_zero_broken():
     result = divide(10, 0)
-    assert result == '?'
+    assert result == "?"

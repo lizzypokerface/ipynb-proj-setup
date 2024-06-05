@@ -2,6 +2,7 @@ import pytest
 
 from my_project.shapes.shapes import Square
 
+
 @pytest.mark.parametrize("length, expected_area", [(2, 4), (3, 9), (4, 16)])
 def test_area(length, expected_area):
     assert Square(length).area() == expected_area

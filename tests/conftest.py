@@ -5,6 +5,7 @@ from my_project.shapes.shapes import Circle, Rectangle
 
 # Global fixtures
 
+
 @pytest.fixture
 def circle():
     return Circle(10)

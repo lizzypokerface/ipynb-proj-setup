@@ -18,7 +18,7 @@ class TestCircle:
         assert self.circle.radius == 10
 
     def test_area(self):
-        assert self.circle.area() == (math.pi * 10 ** 2)
+        assert self.circle.area() == (math.pi * 10**2)
 
     def test_perimeter(self):
         assert self.circle.perimeter() == (2 * math.pi * 10)
