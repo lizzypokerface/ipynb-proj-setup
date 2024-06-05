@@ -54,3 +54,10 @@ To execute all tests, run the following command (add `-v` for verbose output):
 ```sh
 poetry run pytest
 ```
+
+### Continuous Integration
+
+This project uses GitHub Actions for continuous integration. The CI pipeline includes:
+
+- Building the project
+- Running unit tests on every push
