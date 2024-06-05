@@ -3,6 +3,7 @@ name: CI
 # https://github.com/marketplace/actions/install-poetry-action
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
