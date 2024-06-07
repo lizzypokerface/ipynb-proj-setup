@@ -8,12 +8,19 @@ from shapes.shapes import Square, Circle, Rectangle
 
 # Function to read YAML file
 def read_yaml(file_path):
-    with open(file_path, "r") as file:
-        return yaml.safe_load(file)
+    logger = logging.getLogger(__name__)
+    logger.info(f"Reading YAML file from {file_path}")
+    try:
+        with open(file_path, "r") as file:
+            data = yaml.safe_load(file)
+            logger.debug(f"YAML data: {data}")
+            return data
+    except Exception as e:
+        logger.error(f"Failed to read YAML file: {e}")
+        raise
 
 
 def run():
-
     # Creating a logger
     logger = logging.getLogger(__name__)
 
@@ -23,36 +30,39 @@ def run():
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
 
-    # Logging messages at different levels
-    logger.debug("This is a debug message")
-    logger.info("This is an info message")
-    logger.warning("This is a warning message")
-    logger.error("This is an error message")
-    logger.critical("This is a critical message")
-
     # Read the YAML configuration file
-    config = read_yaml("config.yaml")
+    try:
+        config = read_yaml("config.yaml")
+    except Exception as e:
+        logger.critical(f"Failed to read configuration: {e}")
+        return
 
     # Extract values into variables
-    project_name = config["project"]["name"]
-    project_version = config["project"]["version"]
+    try:
+        project_name = config["project"]["name"]
+        project_version = config["project"]["version"]
+        python_kernel_path = config["paths"]["python_kernel"]
+        data_directory = config["paths"]["data_dir"]
+        debug_mode = config["settings"]["debug"]
+        max_retries = config["settings"]["max_retries"]
 
-    python_kernel_path = config["paths"]["python_kernel"]
-    data_directory = config["paths"]["data_dir"]
-
-    debug_mode = config["settings"]["debug"]
-    max_retries = config["settings"]["max_retries"]
-
-    # Print variables to verify
-    logger.debug(f"Project Name: {project_name}")
-    logger.debug(f"Project Version: {project_version}")
-    logger.debug(f"Python Kernel Path: {python_kernel_path}")
-    logger.debug(f"Data Directory: {data_directory}")
-    logger.debug(f"Debug Mode: {debug_mode}")
-    logger.debug(f"Max Retries: {max_retries}")
+        logger.info(f"Project Name: {project_name}")
+        logger.info(f"Project Version: {project_version}")
+        logger.info(f"Python Kernel Path: {python_kernel_path}")
+        logger.info(f"Data Directory: {data_directory}")
+        logger.info(f"Debug Mode: {debug_mode}")
+        logger.info(f"Max Retries: {max_retries}")
+    except KeyError as e:
+        logger.error(f"Missing configuration key: {e}")
+        return
 
     # Ensure the 'tmp' directory exists
-    os.makedirs("tmp", exist_ok=True)
+    try:
+        os.makedirs("tmp", exist_ok=True)
+        logger.info("'tmp' directory is ensured to exist")
+    except Exception as e:
+        logger.error(f"Failed to create 'tmp' directory: {e}")
+        return
 
     # Define the CSV file path
     csv_file_path = os.path.join("tmp", "data.csv")
@@ -68,25 +78,48 @@ def run():
     ]
 
     # Write the data to the CSV file
-    with open(csv_file_path, "w", newline="") as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerows(data)
+    try:
+        with open(csv_file_path, "w", newline="") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows(data)
+        logger.info(f"Data has been written to {csv_file_path}")
+    except Exception as e:
+        logger.error(f"Failed to write data to CSV file: {e}")
+        return
 
-    logger.info(f"Data has been written to {csv_file_path}")
+    # Test module level logging with detailed debug
+    try:
+        logger.debug("Testing add function")
+        add_result = add(2, 3)
+        logger.info(f"add(2, 3) = {add_result}")
 
-    # Test module level logging
-    add(2, 3)
-    multiply(2, 3)
-    divide(2, 3)
+        logger.debug("Testing multiply function")
+        multiply_result = multiply(2, 3)
+        logger.info(f"multiply(2, 3) = {multiply_result}")
 
-    sq = Square(5)
-    sq.area()
+        logger.debug("Testing divide function")
+        divide_result = divide(2, 3)
+        logger.info(f"divide(2, 3) = {divide_result}")
+    except Exception as e:
+        logger.error(f"Error in arithmetic operations: {e}")
 
-    ci = Circle(5)
-    ci.area()
+    try:
+        logger.debug("Testing Square class")
+        sq = Square(5)
+        sq_area = sq.area()
+        logger.info(f"Square(5).area() = {sq_area}")
 
-    re = Rectangle(5, 10)
-    re.area()
+        logger.debug("Testing Circle class")
+        ci = Circle(5)
+        ci_area = ci.area()
+        logger.info(f"Circle(5).area() = {ci_area}")
+
+        logger.debug("Testing Rectangle class")
+        re = Rectangle(5, 10)
+        re_area = re.area()
+        logger.info(f"Rectangle(5, 10).area() = {re_area}")
+    except Exception as e:
+        logger.error(f"Error in shape calculations: {e}")
 
 
 if __name__ == "__main__":
