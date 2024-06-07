@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# chmod +x install.sh && ./install.sh
+# chmod +x setup.sh && ./setup.sh
 
 # Function to log messages
 log() {
