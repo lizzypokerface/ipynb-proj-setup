@@ -12,7 +12,6 @@ def different_rectangle():
 
 
 class TestRectangle:
-
     def test_area(self, rectangle):
         assert rectangle.area() == (10 * 20)
 

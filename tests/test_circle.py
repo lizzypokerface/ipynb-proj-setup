@@ -4,7 +4,6 @@ from my_project.shapes.shapes import Circle
 
 
 class TestCircle:
-
     # https: // docs.pytest.org / en / 6.2.x / xunit_setup.html
 
     def setup_method(self, method):

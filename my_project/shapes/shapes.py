@@ -12,7 +12,6 @@ logger.addHandler(handler)
 
 
 class Shape(metaclass=ABCMeta):
-
     def area(self):
         pass
 
@@ -21,7 +20,6 @@ class Shape(metaclass=ABCMeta):
 
 
 class Circle(Shape):
-
     def __init__(self, radius):
         self.radius = radius
         logger.debug(f"Circle created with radius: {radius}")
@@ -47,7 +45,6 @@ class Circle(Shape):
 
 
 class Rectangle(Shape):
-
     def __init__(self, length, width):
         self.length = length
         self.width = width

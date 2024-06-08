@@ -11,7 +11,7 @@ def read_yaml(file_path):
     logger = logging.getLogger(__name__)
     logger.info(f"Reading YAML file from {file_path}")
     try:
-        with open(file_path, "r") as file:
+        with open(file_path) as file:
             data = yaml.safe_load(file)
             logger.debug(f"YAML data: {data}")
             return data

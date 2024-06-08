@@ -1,3 +1,10 @@
+"""
+ChatGPT 3.5 Prompt:
+Using pytest and its functionalities such as fixtures, parametrize, raises,
+and mark, test the following code. Theme the test names and messages after Harry Potter.
+Attach: <classroom.py>
+"""
+
 import pytest
 
 from my_project.classroom.classroom import (
@@ -6,13 +13,6 @@ from my_project.classroom.classroom import (
     Classroom,
     TooManyStudentsException,
 )
-
-"""
-ChatGPT 3.5 Prompt:
-Using pytest and its functionalities such as fixtures, parametrize, raises,
-and mark, test the following code. Theme the test names and messages after Harry Potter.
-Attach: <classroom.py>
-"""
 
 
 # Fixtures
