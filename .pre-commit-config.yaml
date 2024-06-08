@@ -5,17 +5,25 @@ repos:
       - id: trailing-whitespace
         args:
         - --markdown-linebreak-ext=md
-      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-docstring-first
+      - id: check-ast
       - id: check-yaml
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
+      - id: check-toml
+      - id: check-executables-have-shebangs
+      - id: end-of-file-fixer
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
     hooks:
-      - id: black
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+      - id: ruff # Run the linter.
+      - id: ruff-format # Run the formatter.
+  -   repo: https://github.com/asottile/pyupgrade
+      rev: v3.15.2
+      hooks:
+      -   id: pyupgrade
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.5
     hooks:
-      - id: flake8
-        args:
-          - --exclude=venv
-          - --max-line-length=79
-          - --ignore=E203,E501,W503
+      - id: nbqa-black
+      - id: nbqa-isort
+      - id: nbqa-pyupgrade
